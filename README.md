@@ -4,6 +4,8 @@
 
 ## Configuración del proyecto
 
+1. En el root del proyecto, cree la carpeta `/bin`.
+
 1. Vaya a `/config`, copie `config.template` y nombrelo `config`.
 
 2. Entre a `/config/config` y sustituya los valores de las variables de configuración por las correspondientes en su ambiente.
