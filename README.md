@@ -6,9 +6,13 @@
 
 1. En el root del proyecto, cree la carpeta `/bin`.
 
-1. Vaya a `/config`, copie `config.template` y nombrelo `config`.
+2. Copie `Makefile.template` y nombrelo `Makefile`.
 
-2. Entre a `/config/config` y sustituya los valores de las variables de configuración por las correspondientes en su ambiente.
+3. Entre a `Makefile` y sustituya las rutas al inicio de los comandos por la ruta que corresponde al directorio raíz del proyecto en su ambiente local.
+
+4. Vaya a `/config`, copie `config.template` y nombrelo `config`.
+
+5. Entre a `/config/config` y sustituya los valores de las variables de configuración por las correspondientes en su ambiente.
 
 ## Configuración de Apache
 
