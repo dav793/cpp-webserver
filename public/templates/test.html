@@ -1,0 +1,19 @@
+<html>
+	<head>
+		<title>Hello</title>
+		<link rel="stylesheet" href="/css/styles.css">
+	</head>
+	<body>
+
+		<h1>Welcome to {{restaurantName}}</h1>
+		<p>Today's special is {{mainDish}} with a side of {{sideDish}}. Enjoy!</p>
+		<p>Full menu:</p>
+		[[shopItems:i:
+			<div>
+				<span>Item {{i}}: {{name}} | {{pricePerUnit}}</span>
+			</div>
+		]]
+
+		<script type="text/javascript" src="/js/script.js"></script>
+	</body>
+</html>
