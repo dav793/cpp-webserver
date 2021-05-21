@@ -70,6 +70,7 @@ int main(void) {
 		// try to log in
 
 		redirect = true;
+		cout << "Set-Cookie: session-token=" << parsedPostdata["username"] << "\n";
 
 		try {
 			parseTemplate(configMap["TEMPLATES_PATH"] + "/login.html", interpolationMap, interpolationVectorMap, lines);
