@@ -10,6 +10,7 @@ using namespace std;
 #include "lib/template-parser.h"
 #include "lib/url-encoded-data-parser.h"
 #include "lib/crypto.h"
+#include "lib/cookie-parser.h"
 
 map<string, string> configMap;		// aqui se cargan las variables de configuracion extraidas de /config/config
 
@@ -68,9 +69,14 @@ int main(void) {
 		parseUrlEncodedData(postdata_str, parsedPostdata);
 
 		// try to log in
-
 		redirect = true;
-		cout << "Set-Cookie: session-token=" << parsedPostdata["username"] << "\n";
+
+		// set cookie
+		map<string, string> cookieMap {
+			{"username", parsedPostdata["username"]}
+		};
+		string cookieHeader = createCookieHeader(cookieMap);
+		cout << cookieHeader << "\n";
 
 		try {
 			parseTemplate(configMap["TEMPLATES_PATH"] + "/login.html", interpolationMap, interpolationVectorMap, lines);
@@ -109,6 +115,12 @@ int main(void) {
 	for (int i = 0; i < lines.size(); ++i) {
 		cout << lines[i];
 	}
+
+	//string cookie = parseToUrlEncodedData(interpolationMap);
+	//string encrypted = encrypt(cookie, configMap["PRIVATE_KEY"]);
+	//string decrypted = decrypt(encrypted, configMap["PRIVATE_KEY"]);
+	//cout << "ENCRYPTED COOKIE = " << encrypted << "\n";
+	//cout << "DECRYPTED COOKIE = " << decrypted << "\n";
 		
 	return 0;
 

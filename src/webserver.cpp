@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <stdlib.h>
 #include <fstream>
 #include <iostream>
 #include <string>
@@ -8,6 +9,8 @@ using namespace std;
 
 #include "lib/config.h"
 #include "lib/template-parser.h"
+#include "lib/crypto.h"
+#include "lib/cookie-parser.h"
 
 map<string, string> configMap;		// aqui se cargan las variables de configuracion extraidas de /config/config
 
@@ -35,7 +38,7 @@ string getErrorDescription(int exception) {
 	}
 }
 
-int main(void) {
+int main(int argc, char* argv[], char* env[]) {
 
 	parseConfigFile(configMap);
 
@@ -61,6 +64,16 @@ int main(void) {
 		cout << lines[i];
 	}
 		
+	// read cookie
+	map<string, string> cookieMap;
+	getCookie(cookieMap);
+	if (tokenCookieExists(cookieMap)) {
+		cout << "COOKIE TOKEN = " << cookieMap["token"] << "\n";
+	}
+	else {
+		cout << "No valid cookie was found" << "\n";
+	}
+
 	return 0;
 
 }

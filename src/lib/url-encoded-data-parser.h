@@ -5,4 +5,6 @@
 
 void parseUrlEncodedData(string rawData, map<string, string>& parsedData);
 
+string parseToUrlEncodedData(map<string, string>& data);
+
 #endif // UrlEncodedDataParser_H

@@ -129,3 +129,42 @@ curl -i -d "name=David&username=dvargas&password=1234" -H "Content-Type: applica
 curl -i -d "username=dvargas&password=1234" -H "Content-Type: application/x-www-form-urlencoded" -X POST http://localhost:80/store/login.cgi
 ```
 
+## DB
+
+### Crear base de datos y usuario
+
+1. Entrar como `root`:
+	```
+	mysql -u root -p
+	```
+
+2. Crear usuario `dbuser` con password `comprayventa`:
+	```
+	CREATE USER 'dbuser'@'localhost' identified by 'comprayventa';
+	GRANT ALL PRIVILEGES ON *.* TO 'dbuser'@'localhost';
+	FLUSH PRIVILEGES;
+	```
+
+3. Crear base de datos `comprayventa`:
+	```
+	CREATE DATABASE comprayventa;
+	```
+
+4. Importar base de datos de archivos:
+	```
+	mysql -u dbuser -p comprayventa < sql/drop.sql
+	mysql -u dbuser -p comprayventa < sql/tables.sql
+	mysql -u dbuser -p comprayventa < sql/data.sql
+	```
+
+### Imprimir tuplas de tabla `Usuario`:
+
+1. Entrar como usuario `dbuser`:
+	```
+	mysql -u dbuser -p comprayventa
+	```
+
+2. Imprimir tuplas:
+	```
+	SELECT * FROM comprayventa;
+	```

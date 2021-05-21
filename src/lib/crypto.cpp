@@ -4,6 +4,8 @@ using namespace std;
 
 #include "lib/crypto.h"
 
+// Primera solucion: binary XOR encription (no apropiado para cookie header)
+//
 string encrypt(string plain_data, string key) {
     string temp(key);
     while (key.size() < plain_data.size()) {

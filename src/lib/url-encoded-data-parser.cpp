@@ -36,3 +36,25 @@ void parseUrlEncodedData(string rawData, map<string, string>& parsedData) {
 	}
 
 }
+
+string parseToUrlEncodedData(map<string, string>& data) {
+
+	string encodedData = "";
+
+	for(map<string, string>::iterator i = data.begin(); i != data.end(); ++i) {
+		string key = i->first;
+		string value = i->second;
+		
+		if (i != data.begin()) {
+			encodedData.append("&");
+		}
+		encodedData.append(key);
+		encodedData.append("=");
+		encodedData.append(value);
+	}
+
+	// cout << "ENCODED DATA = " << encodedData << ";\n";
+
+	return encodedData;
+
+}
