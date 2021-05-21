@@ -1,5 +1,21 @@
-build-prod: src/webserver.cpp
-	g++ -I C:/Users/gagas/Documents/ucr/seguridad/proyecto/src src/webserver.cpp src/lib/config.cpp src/lib/template-parser.cpp -o bin/webserver.cgi
+build-prod: build-index-prod build-register-prod build-login-prod
 
-build-dev: src/webserver.cpp
+build-dev: build-index-dev build-register-dev build-login-dev
+	
+build-index-prod: src/webserver.cpp
+	g++ -I C:/Users/gagas/Documents/ucr/seguridad/proyecto/src src/webserver.cpp src/lib/config.cpp src/lib/template-parser.cpp -o bin/webserver.cgi
+	
+build-index-dev: src/webserver.cpp
 	g++ -I C:/Users/gagas/Documents/ucr/seguridad/proyecto/src src/webserver.cpp src/lib/config-dev.cpp src/lib/template-parser.cpp -o bin/webserver
+	
+build-register-prod: src/register.cpp
+	g++ -I C:/Users/gagas/Documents/ucr/seguridad/proyecto/src src/register.cpp src/lib/config.cpp src/lib/template-parser.cpp src/lib/url-encoded-data-parser.cpp src/lib/crypto.cpp -o bin/register.cgi
+	
+build-register-dev: src/register.cpp
+	g++ -I C:/Users/gagas/Documents/ucr/seguridad/proyecto/src src/register.cpp src/lib/config-dev.cpp src/lib/template-parser.cpp src/lib/url-encoded-data-parser.cpp src/lib/crypto.cpp -o bin/register
+	
+build-login-prod: src/login.cpp
+	g++ -I C:/Users/gagas/Documents/ucr/seguridad/proyecto/src src/login.cpp src/lib/config.cpp src/lib/template-parser.cpp src/lib/url-encoded-data-parser.cpp src/lib/crypto.cpp -o bin/login.cgi
+	
+build-login-dev: src/login.cpp
+	g++ -I C:/Users/gagas/Documents/ucr/seguridad/proyecto/src src/login.cpp src/lib/config-dev.cpp src/lib/template-parser.cpp src/lib/url-encoded-data-parser.cpp src/lib/crypto.cpp -o bin/login

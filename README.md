@@ -8,7 +8,7 @@
 
 2. Copie `Makefile.template` y nombrelo `Makefile`.
 
-3. Entre a `Makefile` y sustituya las rutas al inicio de los comandos por la ruta que corresponde al directorio raíz del proyecto en su ambiente local.
+3. Entre a `Makefile` y sustituya las rutas en los comandos por la ruta que corresponde al directorio raíz del proyecto en su ambiente local.
 
 4. Vaya a `/config`, copie `config.template` y nombrelo `config`.
 
@@ -114,3 +114,18 @@ En `httpd.conf`, hacer lo siguiente:
 	```
 	./webserver
 	```
+
+## Probar solicitudes
+
+### POST : Registrar un usuario
+
+```
+curl -i -d "name=David&username=dvargas&password=1234" -H "Content-Type: application/x-www-form-urlencoded" -X POST http://localhost:80/store/register.cgi
+```
+
+### POST : Login
+
+```
+curl -i -d "username=dvargas&password=1234" -H "Content-Type: application/x-www-form-urlencoded" -X POST http://localhost:80/store/login.cgi
+```
+
